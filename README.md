@@ -16,4 +16,9 @@ Do you want to use **Papertrail** for **better monitoring** your websites? This 
 
 ## Resources
 [Creating admin option pages](https://codex.wordpress.org/Creating_Options_Pages)
+
 [Papertrail Logging API](https://github.com/sc0ttkclark/papertrail)
+
+[Troy's send_remote_syslog.php](https://gist.github.com/troy/2220679)
+
+[Php's error handler](http://php.net/manual/en/function.set-error-handler.php)
