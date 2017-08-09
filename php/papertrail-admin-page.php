@@ -7,6 +7,11 @@ class PapertrailAdminPage
     {
         add_action( 'admin_menu', array( $this, 'add_plugin_page' ) );
         add_action( 'admin_init', array( $this, 'page_init' ) );
+        add_action( 'wp_ajax_test_papertrail_for_wordpress', array( $this, 'test_papertrail_for_wordpress') );
+    }
+
+    public function test_papertrail_for_wordpress() {
+        throw new Exception('Papertrail for WordPress error test');
     }
 
     /**
@@ -40,8 +45,11 @@ class PapertrailAdminPage
                 settings_fields( 'papertrail_for_wordpress_options_group' );
                 do_settings_sections( 'papertrail-for-wordpress-settings' );
                 submit_button();
-            ?>
-            </form>
+            ?>   
+
+            <a href="#" onclick="jQuery('#running_test').removeClass('hidden'); jQuery.post(ajaxurl, {action: 'test_papertrail_for_wordpress'}, function(response) {jQuery('#running_test').addClass('hidden');alert('Check your papertrail logs for: Papertrail for WordPress error test')});"> Try out</a> your <strong>saved</strong> settings.   
+            <div id="running_test" class="hidden">Running test...</div>
+             </form>
         </div>
         <?php
     }
