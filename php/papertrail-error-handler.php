@@ -12,6 +12,8 @@ class Papertrail_ErrorHandler {
         
         $message = "[ERROR] " .  $errstr . ' ' .  $errfile . ' ' . $errline;
         Papertrail_Sender::send_remote_syslog( $message, "WordPresso", "Dev-Machine",$host, $port);
+
+        return false;
 	}
 
     public static function setup_handler(){
