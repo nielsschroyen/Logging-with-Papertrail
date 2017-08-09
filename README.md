@@ -22,3 +22,5 @@ Do you want to use **Papertrail** for **better monitoring** your websites? This 
 [Troy's send_remote_syslog.php](https://gist.github.com/troy/2220679)
 
 [Php's error handler](http://php.net/manual/en/function.set-error-handler.php)
+
+[Plugin Handbook](https://developer.wordpress.org/plugins)
