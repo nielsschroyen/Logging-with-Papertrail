@@ -24,3 +24,5 @@ Do you want to use **Papertrail** for **better monitoring** your websites? This 
 [Php's error handler](http://php.net/manual/en/function.set-error-handler.php)
 
 [Plugin Handbook](https://developer.wordpress.org/plugins)
+
+[Exception handling](https://stackoverflow.com/questions/5551668/what-are-the-best-practices-for-catching-and-re-throwing-exceptions)
