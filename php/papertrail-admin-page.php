@@ -30,14 +30,14 @@ class PapertrailAdminPage
     public function create_admin_page()
     {
         // Set class property
-        $this->options = get_option( 'papertrail_options' );
+        $this->options = get_option( 'papertrail_for_wordpress_options' );
         ?>
         <div class="wrap">
             <h1>Papertrail for WordPress</h1>
             <form method="post" action="options.php">
             <?php
                 // This prints out all hidden setting fields
-                settings_fields( 'papertrail_options_group' );
+                settings_fields( 'papertrail_for_wordpress_options_group' );
                 do_settings_sections( 'papertrail-for-wordpress-settings' );
                 submit_button();
             ?>
@@ -52,8 +52,8 @@ class PapertrailAdminPage
     public function page_init()
     {        
         register_setting(
-            'papertrail_options_group', // Option group
-            'papertrail_options', // Option name
+            'papertrail_for_wordpress_options_group', // Option group
+            'papertrail_for_wordpress_options', // Option name
             array( $this, 'sanitize' ) // Sanitize
         );
 
@@ -114,7 +114,7 @@ class PapertrailAdminPage
     public function host_callback()
     {
         printf(
-            '<input type="text" id="host" name="papertrail_options[host]" value="%s" />',
+            '<input type="text" id="host" name="papertrail_for_wordpress_options[host]" value="%s" />',
             isset( $this->options['host'] ) ? esc_attr( $this->options['host']) : ''
         );
     }
@@ -122,7 +122,7 @@ class PapertrailAdminPage
     public function port_callback()
     {
         printf(
-            '<input type="text" id="port" name="papertrail_options[port]" value="%s" />',
+            '<input type="text" id="port" name="papertrail_for_wordpress_options[port]" value="%s" />',
             isset( $this->options['port'] ) ? esc_attr( $this->options['port']) : ''
         );
     }

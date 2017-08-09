@@ -13,5 +13,3 @@ require_once 'php/papertrail-error-handler.php';
 require_once 'php/papertrail-admin-page.php';
 
 Papertrail_ErrorHandler::setup_handler();
-
-$bla = 5 /0;

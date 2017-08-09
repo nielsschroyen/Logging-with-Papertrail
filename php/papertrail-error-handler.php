@@ -6,7 +6,7 @@ class Papertrail_ErrorHandler {
 
 
     public static function error_handler(  $errno , $errstr, $errfile, $errline) {
-        $options = get_option( 'papertrail_options' );
+        $options = get_option( 'papertrail_for_wordpress_options' );
         $host =  esc_attr( $options['host']);
         $port =  esc_attr( $options['port']);
         
