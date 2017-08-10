@@ -20,7 +20,9 @@ class Papertrail_ErrorHandler {
         $options = get_option( 'papertrail_for_wordpress_options' );
         $host =  esc_attr( $options['host']);
         $port =  esc_attr( $options['port']);
-        Papertrail_Sender::send_remote_syslog( $message, "WordPresso", "Dev-Machine",$host, $port);
+        $system =  esc_attr( $options['system']);
+        $program =  esc_attr( $options['program']);
+        Papertrail_Sender::send_remote_syslog( $message, $system , $program ,$host, $port);
 	}
 
     public static function setup_handler(){

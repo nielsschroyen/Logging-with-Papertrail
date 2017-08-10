@@ -74,7 +74,7 @@ class PapertrailAdminPage
 
         add_settings_field(
             'host', 
-            'Papertrail Host', 
+            'Papertrail host', 
             array( $this, 'host_callback' ), 
             'papertrail-for-wordpress-settings', 
             'papertrail_setting_section_id'
@@ -82,11 +82,28 @@ class PapertrailAdminPage
 
         add_settings_field(
             'port', 
-            'Papertrail Port', 
+            'Papertrail port', 
             array( $this, 'port_callback' ), 
             'papertrail-for-wordpress-settings', 
             'papertrail_setting_section_id'
         );  
+
+        add_settings_field(
+            'system', 
+            'System name', 
+            array( $this, 'system_callback' ), 
+            'papertrail-for-wordpress-settings', 
+            'papertrail_setting_section_id'
+        ); 
+     
+        add_settings_field(
+            'program', 
+            'Program name', 
+            array( $this, 'program_callback' ), 
+            'papertrail-for-wordpress-settings', 
+            'papertrail_setting_section_id'
+        );     
+
     }
 
     /**
@@ -103,6 +120,12 @@ class PapertrailAdminPage
         
         if( isset( $input['port'] ) )
             $new_input['port'] = sanitize_text_field( $input['port'] );
+
+        if( isset( $input['system'] ) )
+            $new_input['system'] = sanitize_text_field( $input['system'] );
+
+        if( isset( $input['program'] ) )
+            $new_input['program'] = sanitize_text_field( $input['program'] );
 
         return $new_input;
     }
@@ -132,6 +155,32 @@ class PapertrailAdminPage
         printf(
             '<input type="text" id="port" name="papertrail_for_wordpress_options[port]" value="%s" />',
             isset( $this->options['port'] ) ? esc_attr( $this->options['port']) : ''
+        );
+    }
+
+    public function system_callback()
+    {
+        printf(
+            '<input type="text" id="system" name="papertrail_for_wordpress_options[system]" value="%s" />
+             <a href="#" onclick="document.getElementById(\'system\').value = \'%s\';"> Fill in server Hostname</a>
+            or
+             <a href="#" onclick="document.getElementById(\'system\').value = \'%s\';"> Fill in server IP</a>',
+            isset( $this->options['system'] ) ? esc_attr( $this->options['system']) : gethostbyname(gethostname()),
+            gethostname(),
+            gethostbyname(gethostname())
+        );
+    }
+
+    public function program_callback()
+    {
+        printf(
+            '<input type="text" id="program" name="papertrail_for_wordpress_options[program]" value="%s" />
+             <a href="#" onclick="document.getElementById(\'program\').value = \'%s\';"> Fill in Sitename</a>
+             or
+             <a href="#" onclick="document.getElementById(\'program\').value = \'%s\';"> Fill in current URL</a>',
+            isset( $this->options['program'] ) ? esc_attr( $this->options['program']) : str_replace(' ', '_', get_bloginfo('name')) ,            
+            str_replace(' ', '_', get_bloginfo('name')) ,               
+            preg_replace('#^https?://#', '', get_option('siteurl'))                 
         );
     }
 }
