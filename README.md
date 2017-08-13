@@ -11,8 +11,6 @@ Do you want to use **Papertrail** for **better monitoring** your websites? This 
 
 ## Notes
 - Using this plugin will [bypas the standard PHP error handler](http://php.net/manual/en/function.set-error-handler.php) within the script execution of WordPress.  
-- The plugin uses [sockets](http://www.php.net/manual/en/sockets.installation.php) to   communicate with Papertrail. The extention should be enabled by
-   default.
 
 ## Resources
 [Creating admin option pages](https://codex.wordpress.org/Creating_Options_Pages)
