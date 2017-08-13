@@ -1,7 +1,7 @@
 # Papertrail-for-WordPress
 [![Build Status](https://travis-ci.org/nielsschroyen/Papertrail-for-WordPress.svg?branch=master)](https://travis-ci.org/nielsschroyen/Papertrail-for-WordPress)
 
-** WordPress plugin to forward error messages to Papertrail.
+**WordPress plugin to forward error messages to Papertrail.
 
 Do you want to use **Papertrail** for **better monitoring** your websites? This plugin will enable you to send php-errors to Papertrail even if you do not have the knowledge, time or access to [install the proper Papertrail hooks](http://help.papertrailapp.com/kb/configuration/configuring-centralized-logging-from-php-apps/). You only need to install the plugin and enter your Papertrail information.
 
