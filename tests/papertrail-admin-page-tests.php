@@ -2,8 +2,9 @@
 namespace Tests{
   require_once './php/papertrail-admin-page.php';
   use PHPUnit\Framework\TestCase;
-  use PapertrailForWP\PapertrailAdminPage; 
-
+  use PapertrailForWP\PapertrailAdminPage;
+  use phpmock\MockBuilder;
+  
   class PapertrailAdminPageTests extends TestCase
   {
     public static $isAdmin;
@@ -39,6 +40,34 @@ namespace Tests{
       $this->assertContains('<h1>Papertrail for WordPress</h1>',$settingsWrapper);
       $this->assertContains('<form method="post" action="options.php">',$settingsWrapper);
     }
+
+    public function test_page_init_hooksup_settings(){
+       $adminPage = new PapertrailAdminPage();
+       $adminPage->page_init();
+       $this->assertEquals(4,count($this->add_settings_calls));
+       $this->assertEquals("host",$this->add_settings_calls[0]);
+       $this->assertEquals("port",$this->add_settings_calls[1]);
+       $this->assertEquals("system",$this->add_settings_calls[2]);
+       $this->assertEquals("program",$this->add_settings_calls[3]);
+    }
+
+    protected function setUp()
+    {
+      //MOCKOUT stream_socket_client fwrite fclose
+      $this->add_settings_calls = array();
+    
+      $builder = new MockBuilder();
+      $this->add_setting_field_mock = $builder->setNamespace("PapertrailForWP")
+                                  ->setName('add_settings_field')
+                                  ->setFunction( function($name) {array_push ($this->add_settings_calls,$name);})
+                                  ->build();
+
+      $this->add_setting_field_mock->enable();
+    }
+    protected function tearDown()
+    {
+      $this->add_setting_field_mock->disable();
+    }
   }
 }
 
@@ -63,6 +92,13 @@ namespace {
 
   function submit_button(){
 
+  }
+
+  function register_setting(){
+    
+  }
+  function add_settings_section(){
+    
   }
 }
 
