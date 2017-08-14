@@ -3,7 +3,7 @@
 <phpunit bootstrap="vendor/autoload.php">
   <testsuites>
     <testsuite name="unit_tests">
-      <file>tests\papertrail-error-handler-tests.php</file>
+      <directory suffix="tests.php">tests</directory>
     </testsuite>
   </testsuites>
 
@@ -17,5 +17,5 @@
       </exclude>
     </whitelist>
   </filter>
-  
+
 </phpunit>
