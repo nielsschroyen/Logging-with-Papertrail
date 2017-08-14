@@ -5,4 +5,4 @@ php:
 install:
   - travis_retry composer install -no
   
-script: phpunit tests/mytest.php
+script: phpunit tests/papertrail-error-handler-tests.php

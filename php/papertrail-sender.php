@@ -1,6 +1,6 @@
 <?php
 class Papertrail_Sender {
-	public static function send_remote_syslog( $message, $system, $program, $papertrailUrl, $papertrailPort) {
+	public function send_remote_syslog( $message, $system, $program, $papertrailUrl, $papertrailPort) {
 		try {
 			$client = stream_socket_client("udp://$papertrailUrl:$papertrailPort",$errno, $errstr);			
 			foreach(explode("\n", $message) as $line) {
