@@ -13,7 +13,7 @@
 require_once 'php/papertrail-error-handler.php';
 require_once 'php/papertrail-admin-page.php';
 
-$errorHandler =  new Papertrail_ErrorHandler;
+$errorHandler =  new PapertrailForWP\Papertrail_ErrorHandler;
 $errorHandler->setup_handler();
 
-PapertrailAdminPage::init_admin_page();
+PapertrailForWP\PapertrailAdminPage::init_admin_page();

@@ -1,4 +1,5 @@
 <?php
+namespace PapertrailForWP;
 class PapertrailAdminPage
 {
   private $options;
@@ -11,7 +12,7 @@ class PapertrailAdminPage
   }
 
   public function test_papertrail_for_wordpress() {
-    throw new Exception('Papertrail for WordPress error test');
+    throw new \Exception('Papertrail for WordPress error test');
   }
 
   /**

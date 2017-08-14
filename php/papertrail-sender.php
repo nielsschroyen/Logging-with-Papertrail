@@ -1,4 +1,5 @@
 <?php
+namespace PapertrailForWP;
 class Papertrail_Sender {
 	public function send_remote_syslog( $message, $system, $program, $papertrailUrl, $papertrailPort) {
 		try {

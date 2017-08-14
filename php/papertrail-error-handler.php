@@ -1,4 +1,5 @@
 <?php
+namespace PapertrailForWP;
 require_once 'papertrail-sender.php';
 class Papertrail_ErrorHandler {    
   
