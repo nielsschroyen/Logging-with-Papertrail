@@ -15,3 +15,5 @@ require_once 'php/papertrail-admin-page.php';
 
 $errorHandler =  new Papertrail_ErrorHandler;
 $errorHandler->setup_handler();
+
+PapertrailAdminPage::init_admin_page();

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="vendor/autoload.php">
+  <testsuites>
+    <testsuite name="unit_tests">
+      <file>tests\papertrail-error-handler-tests.php</file>
+    </testsuite>
+  </testsuites>
+
+  <filter>
+    <whitelist processUncoveredFilesFromWhitelist="true">
+      <directory suffix=".php">.</directory>
+      <exclude>
+        <directory suffix=".php">test</directory>
+        <directory suffix=".php">vendor</directory>
+        <file>papertrail-for-wordpress.php</file>
+      </exclude>
+    </whitelist>
+  </filter>
+  
+</phpunit>

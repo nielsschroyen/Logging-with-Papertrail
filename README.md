@@ -27,3 +27,5 @@ Do you want to use **Papertrail** for **better monitoring** your websites? This 
 [Plugin Handbook](https://developer.wordpress.org/plugins)
 
 [Exception handling](https://stackoverflow.com/questions/5551668/what-are-the-best-practices-for-catching-and-re-throwing-exceptions)
+
+[PHP code coverage](https://github.com/codecov/example-php)

@@ -5,4 +5,8 @@ php:
 install:
   - travis_retry composer install -no
   
-script: phpunit tests/papertrail-error-handler-tests.php
+script:
+    - vendor/bin/phpunit --coverage-clover=coverage.xml
+
+after_success:
+    - bash <(curl -s https://codecov.io/bash)

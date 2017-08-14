@@ -1,6 +1,7 @@
 <?php
-use PHPUnit\Framework\TestCase;
 require_once './php/papertrail-error-handler.php';
+use PHPUnit\Framework\TestCase;
+
 /*
 https://stackoverflow.com/questions/29758674/how-do-you-unit-test-a-custom-exception-handler-in-php
 */

@@ -182,7 +182,11 @@ class PapertrailAdminPage
       preg_replace('#^https?://#', '', get_option('siteurl'))                 
     );
   }
-}
 
-if( is_admin() )
-  $papertrailAdminPage = new PapertrailAdminPage();
+  public static function init_admin_page(){
+    if( is_admin() )
+      return new PapertrailAdminPage();
+
+    return null;
+  }
+}
