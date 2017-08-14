@@ -9,7 +9,7 @@ class Papertrail_Sender {
 					fwrite($client, $syslog_message);			
 			}
 			fclose($client);	
-		} catch (Exception $e) {
+		} catch (\Exception $e) {
 			//Ignore exception for now
 		}
 	}

@@ -7,7 +7,24 @@ use PapertrailForWP\Papertrail_Sender;
 
 class PapertrailSenderTests extends TestCase
 {
-  public function test_send_remote_syslog()
+  public function test_send_remote_syslog_within_function_Exceptions_are_catched_and_eaten()
+  {
+    $sender = new Papertrail_Sender;
+    $this->fwriteMock->disable();
+    
+    $builder = new MockBuilder();
+    $this->fwriteMock = $builder->setNamespace("PapertrailForWP")
+                                ->setName('fwrite')
+                                ->setFunction(function() {throw new \Exception("test");})
+                                ->build();
+    $this->fwriteMock->enable();
+    $sender->send_remote_syslog("message", "system", "program", "papertrailurl", "papertrailPort");
+
+    $this->assertTrue(true);
+  }
+
+   
+  public function test_send_remote_syslog_callsstreamSocket_fwrite_fclose()
   {
     $sender = new Papertrail_Sender;
     $sender->send_remote_syslog("message", "system", "program", "papertrailurl", "papertrailPort");
