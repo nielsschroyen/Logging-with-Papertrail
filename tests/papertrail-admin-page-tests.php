@@ -51,6 +51,31 @@ namespace Tests{
        $this->assertEquals("program",$this->add_settings_calls[3]);
     }
 
+    public function test_strip_https_strips_http_from_begin(){
+      $adminPage = new PapertrailAdminPage();
+      $result = $adminPage->strip_https("http://www.google.com");
+      $this->assertEquals("www.google.com", $result);
+    }
+    
+    public function test_strip_https_strips_https_from_begin(){
+      $adminPage = new PapertrailAdminPage();
+      $result = $adminPage->strip_https("https://www.google.com");
+      $this->assertEquals("www.google.com", $result);
+    }
+
+    public function test_strip_https_not_strips_http_from_end(){
+            $adminPage = new PapertrailAdminPage();
+      $result = $adminPage->strip_https("www.google.comhttp://");
+      $this->assertEquals("www.google.comhttp://", $result);
+
+    }
+
+    public function test_strip_https_not_strips_http_from_middle(){
+      $adminPage = new PapertrailAdminPage();
+      $result = $adminPage->strip_https("www.http://google.com");
+      $this->assertEquals("www.http://google.com", $result);
+    }
+
     protected function setUp()
     {
       //MOCKOUT stream_socket_client fwrite fclose

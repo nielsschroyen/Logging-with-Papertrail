@@ -180,8 +180,12 @@ class PapertrailAdminPage
         <a href="#" onclick="document.getElementById(\'program\').value = \'%s\';"> Fill in current URL</a>',
       isset( $this->options['program'] ) ? esc_attr( $this->options['program']) : str_replace(' ', '_', get_bloginfo('name')) ,            
       str_replace(' ', '_', get_bloginfo('name')) ,               
-      preg_replace('#^https?://#', '', get_option('siteurl'))                 
+      $this->strip_https(get_option('siteurl'))                 
     );
+  }
+
+  public function strip_https($theString){
+    return preg_replace('#^https?://#', '', $theString);
   }
 
   public static function init_admin_page(){
