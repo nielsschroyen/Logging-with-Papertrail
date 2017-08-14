@@ -27,6 +27,34 @@ class PapertrailErrorHandlerTests extends TestCase
     }
   }
 
+  public function test_OnError_Sender_IsCalled()
+  {
+    $errorHandler = new Papertrail_ErrorHandler();
+
+    $fakeSender = $this->getMockBuilder('Papertrail_Sender')
+                       ->getMock();
+
+    $fakeSender->expects($this->exactly(1))
+               ->method('send_remote_syslog')
+               ->with("[ERROR] string test.php test", 'system', 'program', 'host', 'port');
+
+    $errorHandler->papertrailSender = $fakeSender;
+    $errorHandler->error_handler(1 , "string", "test.php", "test");
+  }
+
+  public function test_OnError_returns_false()
+  {
+    $errorHandler = new Papertrail_ErrorHandler();
+
+    $fakeSender = $this->getMockBuilder('Papertrail_Sender')
+                       ->getMock();
+
+    $errorHandler->papertrailSender = $fakeSender;
+    $result = $errorHandler->error_handler(1 , "string", "test.php", "test");
+    
+    $this->assertFalse($result);
+  }
+
   public function test_OnException_Exception_IsReThrown()
   {
     $errorHandler = new Papertrail_ErrorHandler();
@@ -46,6 +74,16 @@ class PapertrailErrorHandlerTests extends TestCase
     $myExceptionHandler = set_exception_handler(null);
 
     $this->assertNotNull($myExceptionHandler);
+  }
+
+  public function test_SetHandler_SetsErrorHandler()
+  {
+    $errorHandler = new Papertrail_ErrorHandler();
+    $errorHandler->setup_handler();
+    
+    $myErrorHandler = set_error_handler(null);
+
+    $this->assertNotNull($myErrorHandler);
   }
 }
  function get_option() {
