@@ -87,7 +87,14 @@ namespace Tests{
 
       $this->assertNotNull($myErrorHandler);
     }
+
+    protected function tearDown()
+    {
+      set_error_handler(null);
+      set_exception_handler(null);
+    }
   }
+  
 }
 namespace {
     // global namespace.

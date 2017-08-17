@@ -65,9 +65,8 @@ class PapertrailSenderTests extends TestCase
   
   protected function tearDown()
   {
-      $this->streamMock->disable();
-      $this->fwriteMock->disable();
-      $this->fcloseMock->disable();
+    $this->streamMock->disable();
+    $this->fwriteMock->disable();
+    $this->fcloseMock->disable();
   }
-
 }

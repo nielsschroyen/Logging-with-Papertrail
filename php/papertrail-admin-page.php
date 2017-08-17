@@ -1,5 +1,6 @@
 <?php
 namespace PapertrailForWP;
+require_once 'papertrail-settings-admin-validator.php';
 class PapertrailAdminPage
 {
   private $options;
@@ -36,7 +37,7 @@ class PapertrailAdminPage
   public function create_admin_page()
   {
     // Set class property
-    $this->options = get_option( 'papertrail_for_wordpress_options' );
+    $this->options = get_option('papertrail_for_wordpress_options');
     ?>
     <div class="wrap">
       <h1>Papertrail for WordPress</h1>
@@ -111,23 +112,10 @@ class PapertrailAdminPage
     *
     * @param array $input Contains all settings fields as array keys
     */
-  public function sanitize( $input )
+  public function sanitize($input)
   {
-      $new_input = array();
-      
-      if( isset( $input['host'] ) )
-        $new_input['host'] = sanitize_text_field( $input['host'] );
-      
-      if( isset( $input['port'] ) )
-        $new_input['port'] = sanitize_text_field( $input['port'] );
-
-      if( isset( $input['system'] ) )
-        $new_input['system'] = sanitize_text_field( $input['system'] );
-
-      if( isset( $input['program'] ) )
-        $new_input['program'] = sanitize_text_field( $input['program'] );
-
-      return $new_input;
+     $validator = new PapertrailSettingsAdminValidator($input, get_option('papertrail_for_wordpress_options') );
+     return $validator->validate();
   }
 
   /** 
@@ -169,6 +157,8 @@ class PapertrailAdminPage
       gethostname(),
       gethostbyname(gethostname())
     );
+
+
   }
 
   public function program_callback()
