@@ -4,9 +4,18 @@ php:
 
 install:
   - travis_retry composer install -no
-  
-script:
-    - vendor/bin/phpunit --coverage-clover=coverage.xml
 
-after_success:
-    - bash <(curl -s https://codecov.io/bash)
+jobs:
+  include:
+    - stage: test
+      script: vendor/bin/phpunit --coverage-clover=coverage.xml
+      after_success: bash <(curl -s https://codecov.io/bash)
+    - stage: deploy
+      deploy:
+        provider: releases
+        api_key:
+          secure: 2thL7hq6vhXZUbLMVVyh8sBTjrrsf4gbKsdIvJk+6yxyBkb6OZGmjxzXgZDklc+omIx693zRERJu2b0/9PtUkWMa6nDLZOV8GmFkRs4+xv/K8m8TMFidZpOvhar+ml1Rcaz43YjasfWmJ/eelqpc6G0VrRMN78P49yWU6HrqTRYJ9e17cBY480pfIYRH0yN78wCduM+55QdbK1JQg5n0hY1wX/4drLZvhkGb1dE2ebrToQs3z6tiigTwEvVhRg5dWv8FOYKfu34mlLnAFQYHeRO4+edyVJI6KGK0RoN8VzU4OqvfYON4mFglJAMUfcSp3F6CvhdHxCgmY/6zKk490B+CrlQQA21vL8bqdunYVk5NM04wsh7O15bONHL/8D9Tfvy6pnWhYI1t36/c6fLqX5Ny54EWU1KyCs3ZERXxqTkQ+vVrPHgx+J/fWaF+g8st1XIcjADmjK6r7WeXMFIo11e06lZTApa1My6v5s7KfpFZWFUwxGsvrpLgl6HFOJUKOCQDLS4IK7HgNpQTF0MeLmE4MdQoWIKUTpZ0Zzopi9nqvbHha7Z3YPNIEAc5Zos4ZyY0gZNR7E0bgi6Bw2qg1RRXg5CZOKcP+Mfd/Eh0Dw7Ds9aYxDGeareTQANUpp89Xagpq2pSAKyxYu888i/vIBCju7Z3x3ufcC/PqFyJgx0=
+        skip_cleanup: true   
+        file: papertrail-for-wordpress.zip
+        on:
+          repo: nielsschroyen/Papertrail-for-WordPress
