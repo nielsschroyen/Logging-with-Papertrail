@@ -22,7 +22,7 @@ class Papertrail_ErrorHandler {
     $this->send_message($message);
     throw $exception;
   }
-  
+
   public function send_message($message){
     $options = get_option( 'papertrail_for_wordpress_options' );
 
@@ -36,7 +36,9 @@ class Papertrail_ErrorHandler {
     $port =  esc_attr( $options['port']);
     $system =  esc_attr( $options['system']);
     $program =  esc_attr( $options['program']);
-    $this->papertrailSender->send_remote_syslog( $message, $system , $program ,$host, $port);
+    $protocol =  esc_attr( $options['protocol']);
+
+    $this->papertrailSender->send_remote_syslog($protocol, $message, $system , $program ,$host, $port);
 }
   public function setup_handler(){
     set_error_handler( array( $this, 'error_handler'));

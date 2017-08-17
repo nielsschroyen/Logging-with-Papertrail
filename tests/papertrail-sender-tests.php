@@ -18,7 +18,7 @@ class PapertrailSenderTests extends TestCase
                                 ->setFunction(function() {throw new \Exception("test");})
                                 ->build();
     $this->fwriteMock->enable();
-    $sender->send_remote_syslog("message", "system", "program", "papertrailurl", "papertrailPort");
+    $sender->send_remote_syslog("udp","message", "system", "program", "papertrailurl", "papertrailPort");
 
     $this->assertTrue(true);
   }
@@ -27,7 +27,7 @@ class PapertrailSenderTests extends TestCase
   public function test_send_remote_syslog_callsstreamSocket_fwrite_fclose()
   {
     $sender = new Papertrail_Sender;
-    $sender->send_remote_syslog("message", "system", "program", "papertrailurl", "papertrailPort");
+    $sender->send_remote_syslog("udp","message", "system", "program", "papertrailurl", "papertrailPort");
 
     $this->assertEquals(1, $this->stream_socket_called);
     $this->assertEquals(1, $this->fwrite_called);

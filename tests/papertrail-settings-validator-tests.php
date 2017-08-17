@@ -129,7 +129,7 @@ class PapertrailSettingsValidatorTests extends TestCase{
   public function test_is_valid_NotValidSettings_ReturnsFalse(){ 
     $settings=$this->create_valid_settings();
     $settings["host"] = "";
-    
+
     $validator = new PapertrailSettingsValidator($settings);
     
     $this->assertFalse($validator->is_valid());
@@ -139,7 +139,8 @@ class PapertrailSettingsValidatorTests extends TestCase{
     return ["host"=>"Test",
             "port"=>"Test",
             "system"=>"Test",
-            "program"=>"Test"];
+            "program"=>"Test",
+            "protocol"=>"udp"];
   }
 
   protected function setUp(){

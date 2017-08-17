@@ -7,7 +7,8 @@
                               "host" => "host",
                               "port" => "port",
                               "system" => "system",
-                              "program" => "program"
+                              "program" => "program",
+                              "protocol" => "udp"
                             ];
     }
   }

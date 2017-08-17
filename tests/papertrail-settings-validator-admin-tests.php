@@ -14,11 +14,12 @@ namespace Test{
       $validator = new PapertrailSettingsAdminValidator($settings,[]);
       $sanitizedFields = $validator->validate();
       
-      $this->assertEquals(4,count($sanitizedFields));
+      $this->assertEquals(5,count($sanitizedFields));
       $this->assertEquals("TestHost",$sanitizedFields["host"]);
       $this->assertEquals("TestPort",$sanitizedFields["port"]);
       $this->assertEquals("TestSystem",$sanitizedFields["system"]);
       $this->assertEquals("TestProgram",$sanitizedFields["program"]);
+      $this->assertEquals("udp",$sanitizedFields["protocol"]);
     }
 
     public function test_validate_InValidSettings_ReturnsRestoresOriginalIfPresent(){
@@ -28,7 +29,7 @@ namespace Test{
       $validator = new PapertrailSettingsAdminValidator($settings,["host"=>"originalHost"]);
       $sanitizedFields = $validator->validate();
       
-      $this->assertEquals(4,count($sanitizedFields));
+      $this->assertEquals(5,count($sanitizedFields));
       $this->assertEquals("originalHost",$sanitizedFields["host"]);
     }
 
@@ -39,7 +40,7 @@ namespace Test{
       $validator = new PapertrailSettingsAdminValidator($settings,[]);
       $sanitizedFields = $validator->validate();
       
-      $this->assertEquals(3,count($sanitizedFields));
+      $this->assertEquals(4,count($sanitizedFields));
       $this->assertFalse(isset($sanitizedFields["host"]));
     }
 
@@ -52,13 +53,14 @@ namespace Test{
       $fakeWordpressWrapper = $this->getMockBuilder('PapertrailForWP\WPWrapper')
                           ->getMock();                        
 
-      $fakeWordpressWrapper->expects($this->exactly(4))
+      $fakeWordpressWrapper->expects($this->exactly(5))
                           ->method('sanitize_text_field')
                           ->with($this->logicalOr(
                                     $this->equalTo('TestHost'), 
                                     $this->equalTo('TestPort'), 
                                     $this->equalTo('TestSystem'), 
-                                    $this->equalTo('TestProgram')
+                                    $this->equalTo('TestProgram'),                                    
+                                    $this->equalTo('udp')
                             ));
 
       WPWrapper::setInstanceForTest($fakeWordpressWrapper);
@@ -71,7 +73,8 @@ namespace Test{
       return ["host"=>"TestHost",
               "port"=>"TestPort",
               "system"=>"TestSystem",
-              "program"=>"TestProgram"];
+              "program"=>"TestProgram",
+              "protocol"=>"udp"];
     }
 
     protected function setUp(){

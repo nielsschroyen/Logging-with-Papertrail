@@ -50,7 +50,7 @@ namespace Tests{
 
       $fakeSender->expects($this->exactly(1))
                 ->method('send_remote_syslog')
-                ->with($this->stringContains("[ERROR] test exception"), 'system', 'program', 'host', 'port');
+                ->with("udp",$this->stringContains("[ERROR] test exception"), 'system', 'program', 'host', 'port');
 
       $errorHandler->papertrailSender = $fakeSender;
 
@@ -70,7 +70,7 @@ namespace Tests{
 
       $fakeSender->expects($this->exactly(1))
                 ->method('send_remote_syslog')
-                ->with("[ERROR] string test.php test", 'system', 'program', 'host', 'port');
+                ->with("udp", "[ERROR] string test.php test", 'system', 'program', 'host', 'port');
 
       $errorHandler->papertrailSender = $fakeSender;
       $errorHandler->error_handler(1 , "string", "test.php", "test");

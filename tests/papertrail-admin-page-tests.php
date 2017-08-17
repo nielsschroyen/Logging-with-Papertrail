@@ -46,11 +46,12 @@ namespace Tests{
     public function test_page_init_hooksup_settings(){
        $adminPage = new PapertrailAdminPage();
        $adminPage->page_init();
-       $this->assertEquals(4,count($this->add_settings_calls));
+       $this->assertEquals(5,count($this->add_settings_calls));
        $this->assertEquals("host",$this->add_settings_calls[0]);
        $this->assertEquals("port",$this->add_settings_calls[1]);
        $this->assertEquals("system",$this->add_settings_calls[2]);
        $this->assertEquals("program",$this->add_settings_calls[3]);
+       $this->assertEquals("protocol",$this->add_settings_calls[4]);
     }
 
     public function test_strip_https_strips_http_from_begin(){
@@ -82,7 +83,7 @@ namespace Tests{
     public function test_sanitize_InvalidValues_RestoresPrevious(){
         $adminPage = new PapertrailAdminPage();
         $sanitizedValues = $adminPage->sanitize([]);        
-        $this->assertEquals(4, count($sanitizedValues));
+        $this->assertEquals(5, count($sanitizedValues));
     }
 
     public function test_host_callback_ReturnsInput(){
@@ -116,6 +117,14 @@ namespace Tests{
       $adminPage->program_callback();
       $result = ob_get_clean();
       $this->assertContains('<input type="text" id="program" name="papertrail_for_wordpress_options[program]" value="" />',$result);
+    }
+
+    public function test_protocol_callback_ReturnsInput(){
+      $adminPage = new PapertrailAdminPage();
+      ob_start();
+      $adminPage->protocol_callback();
+      $result = ob_get_clean();
+      $this->assertContains('<select id="protocol" name="papertrail_for_wordpress_options[protocol]" value="">',$result);
     }
 
 

@@ -22,6 +22,11 @@ class PapertrailSettingsValidator{
                 "Id" => "program",
                 "Name" => "Program",                  
                 "Validators" => ["NotEmpty"],
+              ],
+              "protocol" => [
+                "Id" => "protocol",
+                "Name" => "Connection protocol",                  
+                "Validators" => ["NotEmpty"],
               ]
             ];
 

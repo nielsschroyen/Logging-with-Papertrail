@@ -105,6 +105,13 @@ class PapertrailAdminPage
       'papertrail-for-wordpress-settings', 
       'papertrail_setting_section_id'
     );   
+    add_settings_field(
+      'protocol', 
+      'Connection protocol', 
+      array( $this, 'protocol_callback' ), 
+      'papertrail-for-wordpress-settings', 
+      'papertrail_setting_section_id'
+    );   
   }
 
   /**
@@ -134,16 +141,16 @@ class PapertrailAdminPage
   {
     printf(
       '<input type="text" id="host" name="papertrail_for_wordpress_options[host]" value="%s" />',
-      isset( $this->options['host'] ) ? esc_attr( $this->options['host']) : ''
-    );
+       $this->get_escaped_option('host')         
+      );
   }
 
   public function port_callback()
   {
     printf(
       '<input type="text" id="port" name="papertrail_for_wordpress_options[port]" value="%s" />',
-      isset( $this->options['port'] ) ? esc_attr( $this->options['port']) : ''
-    );
+        $this->get_escaped_option('port')         
+      );
   }
 
   public function system_callback()
@@ -153,7 +160,7 @@ class PapertrailAdminPage
         <a href="#" onclick="document.getElementById(\'system\').value = \'%s\';"> Fill in server Hostname</a>
       or
         <a href="#" onclick="document.getElementById(\'system\').value = \'%s\';"> Fill in server IP</a>',
-      isset( $this->options['system'] ) ? esc_attr( $this->options['system']) : '',
+      $this->get_escaped_option('system'),         
       gethostname(),
       gethostbyname(gethostname())
     );
@@ -168,10 +175,30 @@ class PapertrailAdminPage
         <a href="#" onclick="document.getElementById(\'program\').value = \'%s\';"> Fill in Sitename</a>
         or
         <a href="#" onclick="document.getElementById(\'program\').value = \'%s\';"> Fill in current URL</a>',
-      isset( $this->options['program'] ) ? esc_attr( $this->options['program']) :'' ,            
+      $this->get_escaped_option('program'),         
       str_replace(' ', '_', get_bloginfo('name')) ,               
       $this->strip_https(get_option('siteurl'))                 
     );
+  }
+
+  public function protocol_callback(){
+      printf('<select id="protocol" name="papertrail_for_wordpress_options[protocol]" value="%s">
+				        <option id="udp" value="udp" %s>udp</option>
+                <option id="tcp" value="tcp" %s>tcp</option>
+              </select>',
+        $this->get_escaped_option('protocol'),   
+        $this->option_selected('protocol','udp'),
+        $this->option_selected('protocol','tcp')
+      );
+  }
+
+ private function option_selected($optionId, $option){
+    if($this->get_escaped_option($optionId) == $option)
+      return 'selected="selected"';
+    return '';
+ }
+  private function get_escaped_option($option){
+    return   isset( $this->options[$option] ) ? esc_attr( $this->options[$option]) :'';
   }
 
   public function strip_https($theString){
