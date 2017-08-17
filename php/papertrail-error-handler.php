@@ -22,6 +22,7 @@ class Papertrail_ErrorHandler {
     $this->send_message($message);
     throw $exception;
   }
+  
   public function send_message($message){
     $options = get_option( 'papertrail_for_wordpress_options' );
 
@@ -30,7 +31,7 @@ class Papertrail_ErrorHandler {
     if(!$validator->is_valid()){
       return;
     }
-    
+
     $host =  esc_attr( $options['host']);
     $port =  esc_attr( $options['port']);
     $system =  esc_attr( $options['system']);

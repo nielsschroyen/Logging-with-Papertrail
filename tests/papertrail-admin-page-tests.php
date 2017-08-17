@@ -4,6 +4,8 @@ namespace Tests{
   use PHPUnit\Framework\TestCase;
   use PapertrailForWP\PapertrailAdminPage;
   use phpmock\MockBuilder;
+  use FakeWP;
+
   
   class PapertrailAdminPageTests extends TestCase
   {
@@ -76,6 +78,47 @@ namespace Tests{
       $this->assertEquals("www.http://google.com", $result);
     }
 
+    
+    public function test_sanitize_InvalidValues_RestoresPrevious(){
+        $adminPage = new PapertrailAdminPage();
+        $sanitizedValues = $adminPage->sanitize([]);        
+        $this->assertEquals(4, count($sanitizedValues));
+    }
+
+    public function test_host_callback_ReturnsInput(){
+      $adminPage = new PapertrailAdminPage();
+      ob_start();
+      $adminPage->host_callback();
+      $result = ob_get_clean();
+      $this->assertContains('<input type="text" id="host" name="papertrail_for_wordpress_options[host]" value="" />',$result);
+    }
+
+    public function test_system_callback_ReturnsInput(){
+      $adminPage = new PapertrailAdminPage();
+      ob_start();
+      $adminPage->system_callback();
+      $result = ob_get_clean();
+      $this->assertContains('<input type="text" id="system" name="papertrail_for_wordpress_options[system]" value=""',$result);
+    }
+
+    public function test_port_callback_ReturnsInput(){
+      $adminPage = new PapertrailAdminPage();
+      ob_start();
+      $adminPage->port_callback();
+      $result = ob_get_clean();
+      $this->assertContains('<input type="text" id="port" name="papertrail_for_wordpress_options[port]" value="" />',$result);
+    }
+
+    
+    public function test_program_callback_ReturnsInput(){
+      $adminPage = new PapertrailAdminPage();
+      ob_start();
+      $adminPage->program_callback();
+      $result = ob_get_clean();
+      $this->assertContains('<input type="text" id="program" name="papertrail_for_wordpress_options[program]" value="" />',$result);
+    }
+
+
     protected function setUp()
     {
       //MOCKOUT stream_socket_client fwrite fclose
@@ -88,10 +131,12 @@ namespace Tests{
                                   ->build();
 
       $this->add_setting_field_mock->enable();
+      FakeWP::setDefaults();
     }
     protected function tearDown()
     {
       $this->add_setting_field_mock->disable();
+      FakeWP::setDefaults();
     }
   }
 }

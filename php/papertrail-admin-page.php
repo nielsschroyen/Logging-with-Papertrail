@@ -153,7 +153,7 @@ class PapertrailAdminPage
         <a href="#" onclick="document.getElementById(\'system\').value = \'%s\';"> Fill in server Hostname</a>
       or
         <a href="#" onclick="document.getElementById(\'system\').value = \'%s\';"> Fill in server IP</a>',
-      isset( $this->options['system'] ) ? esc_attr( $this->options['system']) : gethostbyname(gethostname()),
+      isset( $this->options['system'] ) ? esc_attr( $this->options['system']) : '',
       gethostname(),
       gethostbyname(gethostname())
     );
@@ -168,7 +168,7 @@ class PapertrailAdminPage
         <a href="#" onclick="document.getElementById(\'program\').value = \'%s\';"> Fill in Sitename</a>
         or
         <a href="#" onclick="document.getElementById(\'program\').value = \'%s\';"> Fill in current URL</a>',
-      isset( $this->options['program'] ) ? esc_attr( $this->options['program']) : str_replace(' ', '_', get_bloginfo('name')) ,            
+      isset( $this->options['program'] ) ? esc_attr( $this->options['program']) :'' ,            
       str_replace(' ', '_', get_bloginfo('name')) ,               
       $this->strip_https(get_option('siteurl'))                 
     );

@@ -36,15 +36,6 @@ class PapertrailSettingsAdminValidator{
     }
   }
 
-  private function validate_field_by_validator_name($field, $validatorName){
-    $validatorFunction = "isValid".$validatorName;
-    if(!$this->$validatorFunction($this->getValue($field["Id"]))){
-      array_push($this->errors, ["field"=>$field,
-        "error"=>$validatorName
-      ]);
-    }
-  }
-
   private function add_error_message($error){
     $errorMessages =  ["NotEmpty"=>"cannot be empty"];
 
