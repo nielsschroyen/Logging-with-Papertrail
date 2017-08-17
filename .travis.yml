@@ -18,4 +18,6 @@ jobs:
         skip_cleanup: true   
         file: papertrail-for-wordpress.zip
         on:
-          branch: master
+          repo: nielsschroyen/Papertrail-for-WordPress
+          tags: true
+          all_branches: true
