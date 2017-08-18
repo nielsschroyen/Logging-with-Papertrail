@@ -1,4 +1,4 @@
- <?php
+<?php
 /**
  * Plugin Name: Papertrail for WordPress
  * Plugin URI: https://github.com/nielsschroyen/Papertrail-for-WordPress
