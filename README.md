@@ -2,18 +2,12 @@
 [![Build Status](https://travis-ci.org/nielsschroyen/Papertrail-for-WordPress.svg?branch=master)](https://travis-ci.org/nielsschroyen/Papertrail-for-WordPress)
 [![codecov](https://codecov.io/gh/nielsschroyen/Papertrail-for-WordPress/branch/master/graph/badge.svg)](https://codecov.io/gh/nielsschroyen/Papertrail-for-WordPress)
 
-Contributors: nielsschroyen
-
-Tags: papertrail, error logging, exception logging
-
-Requires at least: 4.8.1
-
-Tested up to: 4.8.1
-
-Stable tag: 1.0
-
+Contributors: nielsschroyen  
+Tags: papertrail, error logging, exception logging  
+Requires at least: 4.8.1  
+Tested up to: 4.8.1  
+Stable tag: 1.0  
 License: GPLv2
-
 
 WordPress plugin to forward error messages to Papertrail.
 
@@ -25,18 +19,12 @@ The plugin will automatically send all the php errors and exceptions happening w
 - Using this plugin will bypas the standard [PHP error handler](http://php.net/manual/en/function.set-error-handler.php) and [php exception handler](http://php.net/manual/en/function.set-exception-handler.php) within the script execution of WordPress. When the exception is posted to papertrail the exceptions are retrown.  
 
 ### Resources
-[Creating admin option pages](https://codex.wordpress.org/Creating_Options_Pages)
-
-[Papertrail Logging API](https://github.com/sc0ttkclark/papertrail)
-
-[Troy's send_remote_syslog.php](https://gist.github.com/troy/2220679)
-
-[Php's error handler](http://php.net/manual/en/function.set-error-handler.php)
-
-[Plugin Handbook](https://developer.wordpress.org/plugins)
-
-[Exception handling](https://stackoverflow.com/questions/5551668/what-are-the-best-practices-for-catching-and-re-throwing-exceptions)
-
+[Creating admin option pages](https://codex.wordpress.org/Creating_Options_Pages)  
+[Papertrail Logging API](https://github.com/sc0ttkclark/papertrail)  
+[Troy's send_remote_syslog.php](https://gist.github.com/troy/2220679)  
+[Php's error handler](http://php.net/manual/en/function.set-error-handler.php)  
+[Plugin Handbook](https://developer.wordpress.org/plugins)  
+[Exception handling](https://stackoverflow.com/questions/5551668/what-are-the-best-practices-for-catching-and-re-throwing-exceptions)  
 [PHP code coverage](https://github.com/codecov/example-php)
 
 ## Installation
