@@ -3,7 +3,9 @@
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-composer.phar
+/composer.phar
 /vendor/
-clover.xml
-coverage.xml
+/clover.xml
+/coverage.xml
+/readme.txt
+/papertrail-for-wordpress.zip

@@ -1,8 +1,8 @@
 # Papertrail-for-WordPress
 [![Build Status](https://travis-ci.org/nielsschroyen/Papertrail-for-WordPress.svg?branch=master)](https://travis-ci.org/nielsschroyen/Papertrail-for-WordPress)
-[![codecov](https://codecov.io/gh/nielsschroyen/Papertrail-for-WordPress/branch/master/graph/badge.svg)](https://codecov.io/gh/nielsschroyen/Papertrail-for-WordPress)
-
-Contributors: nielsschroyen  
+[![codecov](https://codecov.io/gh/nielsschroyen/Papertrail-for-WordPress/branch/master/graph/badge.svg)](https://codecov.io/gh/nielsschroyen/Papertrail-for-WordPress)  
+Contributors: nielsschroyen
+Donate link: https://www.paypal.me/NielsSchroyen
 Tags: papertrail, error logging, exception logging  
 Requires at least: 4.8.1  
 Tested up to: 4.8.1  
@@ -12,10 +12,10 @@ License: GPLv2
 WordPress plugin to forward error messages to Papertrail.
 
 ## Description
-Do you want to use **Papertrail** for **better monitoring** your websites? This plugin will enable you to send php-errors to Papertrail even if you do not have the knowledge, time or access to [install the proper Papertrail hooks](http://help.papertrailapp.com/kb/configuration/configuring-centralized-logging-from-php-apps/). You only need to install the plugin and enter your Papertrail information.
-The plugin will automatically send all the php errors and exceptions happening within WordPress to papertrail.
+Do you want to use **Papertrail** for **better monitoring** your websites? This plugin will enable you to send php-errors to Papertrail even if you do not have the knowledge, time or access to [install the proper Papertrail hooks](http://help.papertrailapp.com/kb/configuration/configuring-centralized-logging-from-php-apps/). You only need to install the plugin and enter your Papertrail information. The plugin will automatically send all the php errors and exceptions happening within WordPress to papertrail.
 
 ### Notes
+- A [Papertrail](https://https://papertrailapp.com/) account is needed, which is free for most use cases.
 - Using this plugin will bypas the standard [PHP error handler](http://php.net/manual/en/function.set-error-handler.php) and [php exception handler](http://php.net/manual/en/function.set-exception-handler.php) within the script execution of WordPress. When the exception is posted to papertrail the exceptions are retrown.  
 
 ### Resources
@@ -35,6 +35,9 @@ The plugin will automatically send all the php errors and exceptions happening w
  5. The program option allows you to differentiate within papertrail between diffent programs on one machine with the same name
  6. Choose between udp or tcp for your communication, use udp by default fallback to tcp if udp is not allowed on your environment
 
+## Screenshots
+![1 Admin settings page](screenshot-1.png?raw=true "Admin settings page, running with WordPress 4.8 here")
+
 ## Changelog
 ### 1.0.0
 - Added: First release
@@ -44,3 +47,7 @@ The plugin will automatically send all the php errors and exceptions happening w
 - Added: Support custom system and program
 - Added: Support udp and tcp(unenctrypted)
 - Added: simple test settings on the admin page
+
+## Upgrade Notice
+### 1.0
+Initial release of Papertrail-for-WordPress
