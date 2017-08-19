@@ -1,8 +1,8 @@
 # Papertrail-for-WordPress
 [![Build Status](https://travis-ci.org/nielsschroyen/Papertrail-for-WordPress.svg?branch=master)](https://travis-ci.org/nielsschroyen/Papertrail-for-WordPress)
 [![codecov](https://codecov.io/gh/nielsschroyen/Papertrail-for-WordPress/branch/master/graph/badge.svg)](https://codecov.io/gh/nielsschroyen/Papertrail-for-WordPress)  
-Contributors: nielsschroyen
-Donate link: https://www.paypal.me/NielsSchroyen
+Contributors: nielsschroyen  
+Donate link: https://www.paypal.me/NielsSchroyen  
 Tags: papertrail, error logging, exception logging  
 Requires at least: 4.8.1  
 Tested up to: 4.8.1  
