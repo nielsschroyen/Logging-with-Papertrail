@@ -19,13 +19,14 @@ Do you want to use **Papertrail** for **better monitoring** your websites? This 
 - Using this plugin will bypas the standard [PHP error handler](http://php.net/manual/en/function.set-error-handler.php) and [php exception handler](http://php.net/manual/en/function.set-exception-handler.php) within the script execution of WordPress. When the exception is posted to papertrail the exceptions are retrown.  
 
 ### Resources
-[Creating admin option pages](https://codex.wordpress.org/Creating_Options_Pages)  
 [Papertrail Logging API](https://github.com/sc0ttkclark/papertrail)  
 [Troy's send_remote_syslog.php](https://gist.github.com/troy/2220679)  
 [Php's error handler](http://php.net/manual/en/function.set-error-handler.php)  
 [Plugin Handbook](https://developer.wordpress.org/plugins)  
 [Exception handling](https://stackoverflow.com/questions/5551668/what-are-the-best-practices-for-catching-and-re-throwing-exceptions)  
-[PHP code coverage](https://github.com/codecov/example-php)
+[PHP code coverage](https://github.com/codecov/example-php)  
+[Creating admin option pages](https://codex.wordpress.org/Creating_Options_Pages)  
+[WordPress readme.txt](https://github.com/codecov/example-php)
 
 ## Installation
  1. Put the plugin in the plugins folder (`/wp-content/plugins/`)
