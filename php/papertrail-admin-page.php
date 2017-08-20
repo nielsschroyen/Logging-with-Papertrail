@@ -49,7 +49,13 @@ class PapertrailAdminPage
           submit_button();
       ?>   
 
-      <a href="#" onclick="jQuery('#running_test').removeClass('hidden'); jQuery.post(ajaxurl, {action: 'test_papertrail_for_wordpress'}, function(response) {jQuery('#running_test').addClass('hidden');alert('Check your papertrail logs for: Papertrail for WordPress error test')});"> Try out</a> your <strong>saved</strong> settings.   
+      <a href="#" onclick="var onReturn = function(){
+                               jQuery('#running_test').addClass('hidden');
+                               alert('Check your papertrail logs for: Papertrail for WordPress error test')
+                            };
+                            jQuery('#running_test').removeClass('hidden'); 
+                            jQuery.post(ajaxurl, {action: 'test_papertrail_for_wordpress'},onReturn)
+                                  .fail(onReturn);"> Try out</a> your <strong>saved</strong> settings.   
       <div id="running_test" class="hidden">Running test...</div>
       </form>
     </div>
