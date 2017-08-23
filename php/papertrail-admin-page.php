@@ -24,7 +24,7 @@ class PapertrailAdminPage
     // This page will be under "Settings"
     add_options_page(
       'Logging with Papertrail', 
-      'Papertrail for WP', 
+      'Logging Papertrail', 
       'manage_options', 
       'logging-with-papertrail-settings', 
       array( $this, 'create_admin_page' )
