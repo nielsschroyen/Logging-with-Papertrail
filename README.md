@@ -37,7 +37,7 @@ Do you want to use **Papertrail** for **better monitoring** your websites? This 
  6. Choose between udp or tcp for your communication, use udp by default fallback to tcp if udp is not allowed on your environment
 
 ## Screenshots
-![1 Admin settings page](screenshot-1.png?raw=true "Admin settings page, running with WordPress 4.8 here")
+![1 Admin settings page](assets/screenshot-1.png?raw=true "Admin settings page, running with WordPress 4.8 here")
 
 ## Changelog
 ### 1.0.0
