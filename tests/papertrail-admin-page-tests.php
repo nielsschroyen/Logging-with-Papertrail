@@ -11,12 +11,12 @@ namespace Tests{
   {
     public static $isAdmin;
 
-    public function test_papertrail_for_wordpress_ThrowsException()
+    public function test_logging_with_papertrail_ThrowsException()
     {    
-      $this->expectExceptionMessage('Papertrail for WordPress error test');
+      $this->expectExceptionMessage('Logging with Papertrail error test');
       $adminPage = new PapertrailAdminPage();
 
-      $adminPage->test_papertrail_for_wordpress();
+      $adminPage->test_logging_with_papertrail();
     }
 
     public function test_init_admin_page_when_not_admin_ReturnNull()
@@ -39,7 +39,7 @@ namespace Tests{
       ob_start();
       $adminPage->create_admin_page();
       $settingsWrapper = ob_get_clean();
-      $this->assertContains('<h1>Papertrail for WordPress</h1>',$settingsWrapper);
+      $this->assertContains('<h1>Logging with Papertrail</h1>',$settingsWrapper);
       $this->assertContains('<form method="post" action="options.php">',$settingsWrapper);
     }
 
@@ -91,7 +91,7 @@ namespace Tests{
       ob_start();
       $adminPage->host_callback();
       $result = ob_get_clean();
-      $this->assertContains('<input type="text" id="host" name="papertrail_for_wordpress_options[host]" value="" />',$result);
+      $this->assertContains('<input type="text" id="host" name="logging_with_papertrail_options[host]" value="" />',$result);
     }
 
     public function test_system_callback_ReturnsInput(){
@@ -99,7 +99,7 @@ namespace Tests{
       ob_start();
       $adminPage->system_callback();
       $result = ob_get_clean();
-      $this->assertContains('<input type="text" id="system" name="papertrail_for_wordpress_options[system]" value=""',$result);
+      $this->assertContains('<input type="text" id="system" name="logging_with_papertrail_options[system]" value=""',$result);
     }
 
     public function test_port_callback_ReturnsInput(){
@@ -107,7 +107,7 @@ namespace Tests{
       ob_start();
       $adminPage->port_callback();
       $result = ob_get_clean();
-      $this->assertContains('<input type="text" id="port" name="papertrail_for_wordpress_options[port]" value="" />',$result);
+      $this->assertContains('<input type="text" id="port" name="logging_with_papertrail_options[port]" value="" />',$result);
     }
 
     
@@ -116,7 +116,7 @@ namespace Tests{
       ob_start();
       $adminPage->program_callback();
       $result = ob_get_clean();
-      $this->assertContains('<input type="text" id="program" name="papertrail_for_wordpress_options[program]" value="" />',$result);
+      $this->assertContains('<input type="text" id="program" name="logging_with_papertrail_options[program]" value="" />',$result);
     }
 
     public function test_protocol_callback_ReturnsInput(){
@@ -124,7 +124,7 @@ namespace Tests{
       ob_start();
       $adminPage->protocol_callback();
       $result = ob_get_clean();
-      $this->assertContains('<select id="protocol" name="papertrail_for_wordpress_options[protocol]" value="">',$result);
+      $this->assertContains('<select id="protocol" name="logging_with_papertrail_options[protocol]" value="">',$result);
     }
 
 

@@ -9,11 +9,11 @@ class PapertrailAdminPage
   {
     add_action( 'admin_menu', array( $this, 'add_plugin_page' ) );
     add_action( 'admin_init', array( $this, 'page_init' ) );
-    add_action( 'wp_ajax_test_papertrail_for_wordpress', array( $this, 'test_papertrail_for_wordpress') );
+    add_action( 'wp_ajax_test_logging_with_papertrail', array( $this, 'test_logging_with_papertrail') );
   }
 
-  public function test_papertrail_for_wordpress() {
-    throw new \Exception('Papertrail for WordPress error test');
+  public function test_logging_with_papertrail() {
+    throw new \Exception('Logging with Papertrail error test');
   }
 
   /**
@@ -23,7 +23,7 @@ class PapertrailAdminPage
   {
     // This page will be under "Settings"
     add_options_page(
-      'Papertrail for WordPress', 
+      'Logging with Papertrail', 
       'Papertrail for WP', 
       'manage_options', 
       'logging-with-papertrail-settings', 
@@ -37,24 +37,24 @@ class PapertrailAdminPage
   public function create_admin_page()
   {
     // Set class property
-    $this->options = get_option('papertrail_for_wordpress_options');
+    $this->options = get_option('logging_with_papertrail_options');
     ?>
     <div class="wrap">
-      <h1>Papertrail for WordPress</h1>
+      <h1>Logging with Papertrail</h1>
       <form method="post" action="options.php">
       <?php
           // This prints out all hidden setting fields
-          settings_fields( 'papertrail_for_wordpress_options_group' );
+          settings_fields( 'logging_with_papertrail_options_group' );
           do_settings_sections( 'logging-with-papertrail-settings' );
           submit_button();
       ?>   
 
       <a href="#" onclick="var onReturn = function(){
                                jQuery('#running_test').addClass('hidden');
-                               alert('Check your papertrail logs for: Papertrail for WordPress error test')
+                               alert('Check your papertrail logs for: Logging with Papertrail error test')
                             };
                             jQuery('#running_test').removeClass('hidden'); 
-                            jQuery.post(ajaxurl, {action: 'test_papertrail_for_wordpress'},onReturn)
+                            jQuery.post(ajaxurl, {action: 'test_logging_with_papertrail'},onReturn)
                                   .fail(onReturn);"> Try out</a> your <strong>saved</strong> settings.   
       <div id="running_test" class="hidden">Running test...</div>
       </form>
@@ -68,8 +68,8 @@ class PapertrailAdminPage
   public function page_init()
   {        
     register_setting(
-      'papertrail_for_wordpress_options_group', // Option group
-      'papertrail_for_wordpress_options', // Option name
+      'logging_with_papertrail_options_group', // Option group
+      'logging_with_papertrail_options', // Option name
       array( $this, 'sanitize' ) // Sanitize
     );
 
@@ -127,7 +127,7 @@ class PapertrailAdminPage
     */
   public function sanitize($input)
   {
-     $validator = new PapertrailSettingsAdminValidator($input, get_option('papertrail_for_wordpress_options') );
+     $validator = new PapertrailSettingsAdminValidator($input, get_option('logging_with_papertrail_options') );
      return $validator->validate();
   }
 
@@ -146,7 +146,7 @@ class PapertrailAdminPage
   public function host_callback()
   {
     printf(
-      '<input type="text" id="host" name="papertrail_for_wordpress_options[host]" value="%s" />',
+      '<input type="text" id="host" name="logging_with_papertrail_options[host]" value="%s" />',
        $this->get_escaped_option('host')         
       );
   }
@@ -154,7 +154,7 @@ class PapertrailAdminPage
   public function port_callback()
   {
     printf(
-      '<input type="text" id="port" name="papertrail_for_wordpress_options[port]" value="%s" />',
+      '<input type="text" id="port" name="logging_with_papertrail_options[port]" value="%s" />',
         $this->get_escaped_option('port')         
       );
   }
@@ -162,7 +162,7 @@ class PapertrailAdminPage
   public function system_callback()
   {
     printf(
-      '<input type="text" id="system" name="papertrail_for_wordpress_options[system]" value="%s" />
+      '<input type="text" id="system" name="logging_with_papertrail_options[system]" value="%s" />
         <a href="#" onclick="document.getElementById(\'system\').value = \'%s\';"> Fill in server Hostname</a>
       or
         <a href="#" onclick="document.getElementById(\'system\').value = \'%s\';"> Fill in server IP</a>',
@@ -177,7 +177,7 @@ class PapertrailAdminPage
   public function program_callback()
   {
     printf(
-      '<input type="text" id="program" name="papertrail_for_wordpress_options[program]" value="%s" />
+      '<input type="text" id="program" name="logging_with_papertrail_options[program]" value="%s" />
         <a href="#" onclick="document.getElementById(\'program\').value = \'%s\';"> Fill in Sitename</a>
         or
         <a href="#" onclick="document.getElementById(\'program\').value = \'%s\';"> Fill in current URL</a>',
@@ -188,7 +188,7 @@ class PapertrailAdminPage
   }
 
   public function protocol_callback(){
-      printf('<select id="protocol" name="papertrail_for_wordpress_options[protocol]" value="%s">
+      printf('<select id="protocol" name="logging_with_papertrail_options[protocol]" value="%s">
 				        <option id="udp" value="udp" %s>udp</option>
                 <option id="tcp" value="tcp" %s>tcp</option>
               </select>',

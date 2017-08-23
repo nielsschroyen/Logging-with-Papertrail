@@ -1,4 +1,4 @@
-# Logging-with-Papertrail
+# Logging with Papertrail
 [![Build Status](https://travis-ci.org/nielsschroyen/Logging-with-Papertrail.svg?branch=master)](https://travis-ci.org/nielsschroyen/Logging-with-Papertrail)
 [![codecov](https://codecov.io/gh/nielsschroyen/Logging-with-Papertrail/branch/master/graph/badge.svg)](https://codecov.io/gh/nielsschroyen/Logging-with-Papertrail)  
 Contributors: nielsschroyen  

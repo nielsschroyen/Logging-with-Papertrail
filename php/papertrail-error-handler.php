@@ -24,7 +24,7 @@ class Papertrail_ErrorHandler {
   }
 
   public function send_message($message){
-    $options = get_option( 'papertrail_for_wordpress_options' );
+    $options = get_option( 'logging_with_papertrail_options' );
 
     $validator = new PapertrailSettingsValidator($options);
 
