@@ -13,7 +13,7 @@
       <exclude>
         <directory suffix=".php">test</directory>
         <directory suffix=".php">vendor</directory>
-        <file>papertrail-for-wordpress.php</file>
+        <file>logging-with-papertrail.php</file>
       </exclude>
     </whitelist>
   </filter>

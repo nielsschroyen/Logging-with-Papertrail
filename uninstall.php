@@ -4,4 +4,4 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
   die;
 }
 
-delete_option('papertrail_for_wordpress_options');
+delete_option('logging_with_papertrail_options');

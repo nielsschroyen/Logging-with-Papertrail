@@ -26,7 +26,7 @@ class PapertrailAdminPage
       'Papertrail for WordPress', 
       'Papertrail for WP', 
       'manage_options', 
-      'papertrail-for-wordpress-settings', 
+      'logging-with-papertrail-settings', 
       array( $this, 'create_admin_page' )
     );
   }
@@ -45,7 +45,7 @@ class PapertrailAdminPage
       <?php
           // This prints out all hidden setting fields
           settings_fields( 'papertrail_for_wordpress_options_group' );
-          do_settings_sections( 'papertrail-for-wordpress-settings' );
+          do_settings_sections( 'logging-with-papertrail-settings' );
           submit_button();
       ?>   
 
@@ -77,14 +77,14 @@ class PapertrailAdminPage
       'papertrail_setting_section_id', // ID
       'Settings', // Title
       array( $this, 'print_section_info' ), // Callback
-      'papertrail-for-wordpress-settings' // Page
+      'logging-with-papertrail-settings' // Page
     );    
 
     add_settings_field(
       'host', 
       'Papertrail host', 
       array( $this, 'host_callback' ), 
-      'papertrail-for-wordpress-settings', 
+      'logging-with-papertrail-settings', 
       'papertrail_setting_section_id'
     );     
 
@@ -92,7 +92,7 @@ class PapertrailAdminPage
       'port', 
       'Papertrail port', 
       array( $this, 'port_callback' ), 
-      'papertrail-for-wordpress-settings', 
+      'logging-with-papertrail-settings', 
       'papertrail_setting_section_id'
     );  
 
@@ -100,7 +100,7 @@ class PapertrailAdminPage
       'system', 
       'System name', 
       array( $this, 'system_callback' ), 
-      'papertrail-for-wordpress-settings', 
+      'logging-with-papertrail-settings', 
       'papertrail_setting_section_id'
     ); 
   
@@ -108,14 +108,14 @@ class PapertrailAdminPage
       'program', 
       'Program name', 
       array( $this, 'program_callback' ), 
-      'papertrail-for-wordpress-settings', 
+      'logging-with-papertrail-settings', 
       'papertrail_setting_section_id'
     );   
     add_settings_field(
       'protocol', 
       'Connection protocol', 
       array( $this, 'protocol_callback' ), 
-      'papertrail-for-wordpress-settings', 
+      'logging-with-papertrail-settings', 
       'papertrail_setting_section_id'
     );   
   }

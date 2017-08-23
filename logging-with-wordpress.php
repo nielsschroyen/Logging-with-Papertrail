@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: Papertrail for WordPress
- * Plugin URI: https://github.com/nielsschroyen/Papertrail-for-WordPress
+ * Plugin Name: Logging with Papertrail
+ * Plugin URI: https://github.com/nielsschroyen/Logging-with-Papertrail
  * Description: Write php errors and exceptions to Papertrail
  * Version: 1.0.0
  * Author: nielsschroyen

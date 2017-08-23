@@ -1,8 +1,8 @@
-[ -e papertrail-for-wordpress.zip ] && rm papertrail-for-wordpress.zip
+[ -e logging-with-papertrail.zip ] && rm logging-with-papertrail.zip
 
-zip papertrail-for-wordpress.zip readme.txt
-zip papertrail-for-wordpress.zip LICENSE
-zip papertrail-for-wordpress.zip papertrail-for-wordpress.php
-zip papertrail-for-wordpress.zip uninstall.php
-zip papertrail-for-wordpress.zip screenshot-1.png
-zip -r papertrail-for-wordpress.zip php
+zip logging-with-papertrail.zip readme.txt
+zip logging-with-papertrail.zip LICENSE
+zip logging-with-papertrail.zip logging-with-papertrail.php
+zip logging-with-papertrail.zip uninstall.php
+zip logging-with-papertrail.zip screenshot-1.png
+zip -r logging-with-papertrail.zip php

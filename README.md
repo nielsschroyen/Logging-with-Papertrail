@@ -1,6 +1,6 @@
-# Papertrail-for-WordPress
-[![Build Status](https://travis-ci.org/nielsschroyen/Papertrail-for-WordPress.svg?branch=master)](https://travis-ci.org/nielsschroyen/Papertrail-for-WordPress)
-[![codecov](https://codecov.io/gh/nielsschroyen/Papertrail-for-WordPress/branch/master/graph/badge.svg)](https://codecov.io/gh/nielsschroyen/Papertrail-for-WordPress)  
+# Logging-with-Papertrail
+[![Build Status](https://travis-ci.org/nielsschroyen/Logging-with-Papertrail.svg?branch=master)](https://travis-ci.org/nielsschroyen/Logging-with-Papertrail)
+[![codecov](https://codecov.io/gh/nielsschroyen/Logging-with-Papertrail/branch/master/graph/badge.svg)](https://codecov.io/gh/nielsschroyen/Logging-with-Papertrail)  
 Contributors: nielsschroyen  
 Donate link: https://www.paypal.me/NielsSchroyen  
 Tags: papertrail, error logging, exception logging  
@@ -51,4 +51,4 @@ Do you want to use **Papertrail** for **better monitoring** your websites? This 
 
 ## Upgrade Notice
 ### 1.0
-Initial release of Papertrail-for-WordPress
+Initial release of Logging-with-Papertrail
