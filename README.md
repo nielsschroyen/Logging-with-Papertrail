@@ -6,7 +6,7 @@ Donate link: https://www.paypal.me/NielsSchroyen
 Tags: papertrail, error logging, exception logging  
 Requires at least: 3.9.19  
 Tested up to: 4.8.1  
-Stable tag: 1.0  
+Stable tag: 1.0.0  
 License: GPLv2
 
 WordPress plugin to forward error messages to Papertrail.
