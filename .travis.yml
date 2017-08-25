@@ -24,5 +24,5 @@ jobs:
         skip_cleanup: true   
         file: logging-with-papertrail.zip
         on:
-          repo: nielsschroyen/logging-with-papertrail
+          repo: nielsschroyen/Logging-with-Papertrail
           tags: true
